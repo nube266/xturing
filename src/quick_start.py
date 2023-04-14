@@ -10,10 +10,12 @@ from xturing.datasets import InstructionDataset
 instruction_dataset = InstructionDataset("/root/dataset/alpaca_data")
 
 # Initialize the model
-model = BaseModel.create("llama_lora_int8")
+model = BaseModel.create("cerebras_lora_int8")
 
 # Finetune the model
 model.finetune(dataset=instruction_dataset)
+
+model.save("saved_model/cerebras_lora_int8")
 
 # Perform inference
 output = model.generate(texts=["Why LLM models are becoming so important?"])
